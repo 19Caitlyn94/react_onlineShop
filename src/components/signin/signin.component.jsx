@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "./signin.styles.scss";
+import FormInput from "../form-input/form-input.component";
+import Button from "../custom-button/custom-button.component";
 
 export default function Signin() {
   const [formDetails, setFormDetails] = useState({ email: "", password: "" });
@@ -10,7 +13,7 @@ export default function Signin() {
 
   const handleChange = (event) => {
     const { value, name } = event.target;
-    setFormDetails({ [name]: value });
+    setFormDetails({ ...formDetails, [name]: value });
   };
 
   const { email, password } = formDetails;
@@ -20,25 +23,24 @@ export default function Signin() {
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
 
-      <form onSubmit={() => handleSubmit()}>
-        <input
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          label="Email"
           name="email"
           value={email}
           type="email"
+          handleChange={handleChange}
           required
-          onChange={(e) => handleChange(e)}
         />
-        <label> Email </label>
-        <input
+        <FormInput
+          label="Password"
           name="password"
           value={password}
           type="password"
+          handleChange={handleChange}
           required
-          onChange={(e) => handleChange(e)}
         />
-        <label> Password </label>
-
-        <input type="submit" value="Sign in" />
+        <Button type="submit"> Sign in </Button>
       </form>
     </div>
   );

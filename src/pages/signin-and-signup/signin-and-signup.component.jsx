@@ -1,4 +1,5 @@
 import React from "react";
+import "./signin-and-signup.styles.scss";
 import Signin from "../../components/signin/signin.component";
 
 export default function SigninAndSignupPage() {
