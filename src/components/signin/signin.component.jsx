@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./signin.styles.scss";
+
+import { signInWithGoogle } from "../../firebase/firebase.utils.js";
+
 import FormInput from "../form-input/form-input.component";
 import Button from "../custom-button/custom-button.component";
 
@@ -40,7 +43,12 @@ export default function Signin() {
           handleChange={handleChange}
           required
         />
-        <Button type="submit"> Sign in </Button>
+        <div className="buttons">
+          <Button type="submit"> Sign in </Button>
+          <Button onClick={signInWithGoogle} isGoogleSignIn>
+            Sign in with Google
+          </Button>
+        </div>
       </form>
     </div>
   );
