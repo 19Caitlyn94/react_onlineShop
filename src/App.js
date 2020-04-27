@@ -11,14 +11,23 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      createUserProfileDocument(user);
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          setCurrentUser({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      }
     });
     return () => {
       unsubscribeFromAuth();
     };
-  });
-
+  }, []);
   return (
     <div>
       <Header currentUser={currentUser} />
