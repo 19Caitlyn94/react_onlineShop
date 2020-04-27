@@ -25,7 +25,7 @@ export default function Header({ currentUser }) {
               auth.signOut();
             }}
           >
-            SIGN OUT{" "}
+            SIGN OUT
           </div>
         ) : (
           <Link className="option" to="/signin">
