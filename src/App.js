@@ -14,20 +14,22 @@ function App() {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
+
         userRef.onSnapshot((snapShot) => {
+          console.log("snapShot", snapShot);
           setCurrentUser({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data(),
-            },
+            id: snapShot.id,
+            ...snapShot.data(),
           });
         });
       }
+      setCurrentUser(userAuth);
     });
     return () => {
       unsubscribeFromAuth();
     };
   }, []);
+  console.log("currentUser", currentUser);
   return (
     <div>
       <Header currentUser={currentUser} />
