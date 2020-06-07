@@ -2,5 +2,8 @@
     "editor.formatOnSave": true,
     "files.autoSave": "onFocusChange",
     "javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single"
+    "typescript.preferences.quoteStyle": "single",
+    "prettier.arrowParens": "avoid",
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true
 }

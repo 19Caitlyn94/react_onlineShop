@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "./signin.styles.scss";
+import React, { useState } from 'react';
+import './signin.styles.scss';
 
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils.js";
+import { signInWithGoogle, auth } from '../../firebase/firebase.utils.js';
 
-import FormInput from "../form-input/form-input.component";
-import Button from "../custom-button/custom-button.component";
+import FormInput from '../form-input/form-input.component';
+import Button from '../custom-button/custom-button.component';
 
 export default function Signin() {
-  const initialFormData = { email: "", password: "" };
+  const initialFormData = { email: '', password: '' };
   const [formData, setFormData] = useState(initialFormData);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = formData;
 
@@ -22,7 +22,7 @@ export default function Signin() {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { value, name } = event.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -30,29 +30,29 @@ export default function Signin() {
   const { email, password } = formData;
 
   return (
-    <div className="sign-in">
-      <h2 className="title">I already have an account</h2>
+    <div className='sign-in'>
+      <h2 className='title'>I already have an account</h2>
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
-          label="Email"
-          name="email"
+          label='Email'
+          name='email'
           value={email}
-          type="email"
+          type='email'
           handleChange={handleChange}
           required
         />
         <FormInput
-          label="Password"
-          name="password"
+          label='Password'
+          name='password'
           value={password}
-          type="password"
+          type='password'
           handleChange={handleChange}
           required
         />
-        <div className="buttons">
-          <Button type="submit"> Sign in </Button>
+        <div className='buttons'>
+          <Button type='submit'> Sign in </Button>
           <Button onClick={signInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </Button>
