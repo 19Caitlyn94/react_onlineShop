@@ -11,6 +11,7 @@ import ShopPage from './pages/shop/shop.component';
 import { HomePage } from './pages/homepage/homepage.component';
 import Header from './components/header/header.component';
 import SigninAndSignupPage from './pages/signin-and-signup/signin-and-signup.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 import './App.css';
 
@@ -40,7 +41,8 @@ function App({ setCurrentUser, currentUser }) {
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/shop' component={ShopPage} />
+        <Route path='/shop' component={ShopPage} />
+        <Route exact path='/checkout' component={CheckoutPage} />
         <Route
           exact
           path='/signin'
