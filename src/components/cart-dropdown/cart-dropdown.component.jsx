@@ -4,13 +4,14 @@ import { createStructuredSelector } from 'reselect';
 
 import { connect } from 'react-redux';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
 import Button from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 
 import './cart-dropdown.styles.scss';
 
-function Cart({ cartItems, history }) {
+function Cart({ cartItems, history, dispatch }) {
   return (
     <div className='cart-dropdown'>
       {cartItems.length ? (
@@ -21,7 +22,14 @@ function Cart({ cartItems, history }) {
         <span className='empty-message'>Your cart is empty</span>
       )}
       <div className='cart-items'></div>
-      <Button onClick={() => history.push('/checkout')}>GO TO CHECKOUT</Button>
+      <Button
+        onClick={() => {
+          history.push('/checkout');
+          dispatch(toggleCartHidden());
+        }}
+      >
+        GO TO CHECKOUT
+      </Button>
     </div>
   );
 }
