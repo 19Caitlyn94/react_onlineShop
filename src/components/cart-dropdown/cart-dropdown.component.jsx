@@ -14,14 +14,15 @@ import './cart-dropdown.styles.scss';
 function Cart({ cartItems, history, dispatch }) {
   return (
     <div className='cart-dropdown'>
-      {cartItems.length ? (
-        cartItems.map(item => {
-          return <CartItem key={item.id} item={item} />;
-        })
-      ) : (
-        <span className='empty-message'>Your cart is empty</span>
-      )}
-      <div className='cart-items'></div>
+      <div className='cart-items'>
+        {cartItems.length ? (
+          cartItems.map(item => {
+            return <CartItem key={item.id} item={item} />;
+          })
+        ) : (
+          <span className='empty-message'>Your cart is empty</span>
+        )}
+      </div>
       <Button
         onClick={() => {
           history.push('/checkout');
